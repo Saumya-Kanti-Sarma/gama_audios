@@ -1,0 +1,94 @@
+.f-heading {
+  padding-top: 20px;
+  text-align: center;
+}
+
+.f-heading p {
+  font-size: 35px;
+}
+
+.f-tools {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.f-tools p {
+  font-size: 45px;
+}
+
+.f-tools div ul {
+  padding: 0;
+  margin: 0;
+}
+
+.f-tools li {
+  font-size: 30px;
+  padding: 15px 10px;
+  border: 1px solid rgb(255, 255, 255);
+}
+
+.api {
+  text-align: center;
+}
+
+.api h1 {
+  font-size: 45px;
+}
+
+.api p a {
+  text-decoration: none;
+  color: rgb(243, 85, 7);
+  font-size: 30px;
+  cursor: pointer;
+
+}
+
+@media (max-width:600px) {
+  .f-heading p {
+    font-size: 24px;
+  }
+
+  .f-tools p {
+    font-size: 34px;
+    text-align: center;
+  }
+
+  .f-tools ul li {
+    font-size: 20px;
+    padding: 9px 8px;
+  }
+
+  .api h1 {
+    font-size: 30px;
+  }
+}
+
+@media (max-width:360px) {
+  .f-heading p {
+    font-size: 16px;
+  }
+
+  .f-tools p {
+    font-size: 24px;
+  }
+
+  .f-tools ul li {
+    font-size: 16px;
+  }
+
+  .api h1 {
+    font-size: 20px;
+  }
+
+  .api p a {
+    font-size: 20px;
+  }
+
+  .f-heading,
+  .f-tools,
+  .api {
+    margin: 0;
+    padding: 0;
+  }
+}

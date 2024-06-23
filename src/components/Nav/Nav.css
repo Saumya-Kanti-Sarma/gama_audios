@@ -1,0 +1,106 @@
+.main-nav-area,
+.img-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  cursor: default;
+  background-color: #020125;
+}
+
+.img-area {
+  flex: 1;
+  justify-content: start;
+
+}
+
+.img-area img {
+  width: 50px;
+}
+
+.desktop-ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex: 3;
+}
+
+.desktop-ul li {
+  cursor: pointer;
+}
+
+.menu-btn {
+  display: none;
+}
+
+.menu-area {
+  position: absolute;
+  padding-top: 50px;
+  height: calc(100vh - 138px);
+  width: 240px;
+  margin-top: 4px;
+  background-color: #f6f6f6;
+  right: 0;
+  transition: 0.18s ease-in-out;
+  display: none;
+}
+
+.android-ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  height: 90%;
+}
+
+.android-ul li {
+  padding: 5px 100%;
+  transition: 0.12s linear;
+}
+
+.android-ul li:hover {
+  background-color: #c6c6c663;
+  padding: 5px 100%;
+}
+
+@media (max-width: 950px) {
+  .img-area h3 {
+    font-size: medium;
+  }
+
+  .img-area img {
+    width: 50px;
+  }
+
+}
+
+@media (max-width: 550px) {
+  .menu-btn {
+    display: block;
+    height: 60%;
+    margin: 0;
+    align-items: center;
+    border: none;
+    background-color: #020125;
+    border: none;
+  }
+
+  .img-area h3 {
+    font-size: large;
+  }
+
+  .img-area img {
+    width: 50px;
+  }
+
+  .menu-area {
+    display: block;
+  }
+
+  .desktop-ul {
+    display: none;
+  }
+}
