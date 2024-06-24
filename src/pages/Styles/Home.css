@@ -130,10 +130,20 @@
   transform: scale(1.1);
 }
 
-.review_area div textarea {
+.review_content textarea {
   width: 40vw;
   height: 30vh;
   font-size: 2vh;
+  resize: none;
+}
+
+.review_name textarea {
+  height: 20px;
+  width: 40vw;
+  margin-top: 10px;
+  font-size: 2vh;
+  text-align: center;
+  resize: none;
 }
 
 .search_results_clild button {
@@ -155,9 +165,14 @@
     width: 90%;
   }
 
-  .review_area div textarea {
+  .review_content textarea {
     width: 90%;
     height: 40vh;
+  }
+
+  .review_name textarea {
+    width: 90%;
+    height: 30px;
   }
 }
 
