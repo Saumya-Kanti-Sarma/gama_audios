@@ -1,39 +1,41 @@
 import React, { useState } from 'react'
 import './Nav.css'
-import { Link, useNavigate } from 'react-router-dom';
-function Nav() {
+import { Link } from 'react-router-dom';
+function Nav({ toggleMainVisibility }) {
   const [img, setImg] = useState('/gama_audios/menu.svg');
   const changeImg = () => {
     setImg((currentImg) => {
-      if (currentImg == "/gama_audios/menu.svg") {
+      if (currentImg === "/gama_audios/menu.svg") {
         setStyle(0);
+        toggleMainVisibility(false); // Hide main content
         return "/gama_audios/cross.svg";
-      }
-      else {
+      } else {
         setStyle("-100%");
+        toggleMainVisibility(true); // Show main content
         return "/gama_audios/menu.svg";
       }
-    }
-    );
+    });
   };
 
   const [style, setStyle] = useState("-100%");
   const menuStyles = {
     right: style,
-  }
-
+  };
 
   return (
     <>
       <div className='main-nav-area'>
-        <div className="img-area"><img src="/gama_audios/logo.svg" alt="logo" /><h1>Gama Audios</h1></div>
+        <div className="img-area">
+          <img src="/gama_audios/logo.svg" alt="logo" />
+          <h1>Gama Audios</h1>
+        </div>
         <ul className='desktop-ul'>
           <li><Link to={"/gama_audios/"} style={{ color: "white", textDecoration: "none" }}>Home</Link></li>
           <li><Link to={"/gama_audios/about"} style={{ color: "white", textDecoration: "none" }}>About</Link> </li>
           <li><Link to={"/gama_audios/blogs"} style={{ color: "white", textDecoration: "none" }}>Blogs</Link> </li>
           <li><Link to={"/gama_audios/contacts"} style={{ color: "white", textDecoration: "none" }}>Contacts</Link> </li>
         </ul>
-        <button className='menu-btn' onClick={changeImg} >
+        <button className='menu-btn' onClick={changeImg}>
           <img src={img} alt="menu" />
         </button>
       </div>
@@ -44,9 +46,9 @@ function Nav() {
           <li><Link to={"/gama_audios/blogs"} style={{ color: "black", textDecoration: "none" }}>Blogs</Link> </li>
           <li><Link to={"/gama_audios/contacts"} style={{ color: "black", textDecoration: "none" }}>Contacts</Link> </li>
         </ul>
-      </div >
+      </div>
     </>
   );
 }
 
-export default Nav
+export default Nav;

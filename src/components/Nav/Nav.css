@@ -36,10 +36,10 @@
 }
 
 .menu-area {
-  position: absolute;
+  position: fixed;
   padding-top: 50px;
   height: calc(100vh - 138px);
-  width: 240px;
+  width: 100vw;
   margin-top: 4px;
   background-color: #f6f6f6;
   right: 0;

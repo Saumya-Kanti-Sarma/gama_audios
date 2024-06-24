@@ -16,3 +16,8 @@ i {
 .youtube_img {
   width: 10rem;
 }
+
+img {
+  display: inline-block;
+
+}
