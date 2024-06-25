@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
 import './Nav.css'
 import { Link } from 'react-router-dom';
+
+
+
+
 function Nav({ toggleMainVisibility }) {
+
+
   const [img, setImg] = useState('/gama_audios/menu.svg');
   const changeImg = () => {
     setImg((currentImg) => {

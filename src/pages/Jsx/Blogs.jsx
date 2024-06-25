@@ -12,7 +12,7 @@ const Blogs = () => {
     <><nav><Nav toggleMainVisibility={toggleMainVisibility} /></nav>
       {mainVisible && (<main>
         <div className="content">
-          Blogs
+          <h1 style={{ textAlign: "center" }}>Comming Soon...</h1>
         </div>
         <footer style={{ backgroundColor: "blueviolet" }}><Footer /></footer>
       </main>)}
