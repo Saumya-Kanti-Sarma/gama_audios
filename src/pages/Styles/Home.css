@@ -65,17 +65,18 @@
   margin-left: 20px;
 }
 
-.search_results_clild {
+.search_results_child {
   display: flex;
-  margin-top: 10px;
-  margin-left: 10px;
+  width: calc(50vw - 5px);
+  margin-top: 5px;
 }
 
-.search_results_clild img {
+.search_res_img img {
   width: 25vw;
   min-width: 77px;
   max-width: 400px;
   object-fit: cover;
+  height: 100%;
 }
 
 .search_res_texts {
@@ -85,13 +86,13 @@
   justify-content: space-evenly;
 }
 
-.search_results_clild p {
-  font-size: x-large;
+.search_text_res {
+  font-size: 30px;
   font-style: bold;
   margin: 0;
 }
 
-.search_results_clild button {
+.search_text_res button {
   font-size: x-large;
   margin-left: 30px;
   background-color: #b6b4b4;
@@ -146,7 +147,7 @@
   resize: none;
 }
 
-.search_results_clild button {
+.search_text_res button {
   padding: 10px;
 }
 
@@ -163,6 +164,11 @@
 @media (max-width: 1845px) {
   .content-area {
     width: 90%;
+  }
+
+  .search_results_child {
+    width: 100%;
+    background: hsla(0, 0%, 51%, 0.034);
   }
 
   .review_content textarea {
@@ -193,7 +199,7 @@
     padding: 4px;
   }
 
-  .search_res_texts p {
+  .search_text_res {
     font-size: 18px;
   }
 
@@ -203,7 +209,7 @@
 }
 
 @media (max-width: 600px) {
-  .search_results_clild button {
+  .search_text_res button {
     margin-left: 5px;
     font-size: 12px;
     width: 65px;
@@ -220,11 +226,15 @@
     font-size: 8px;
   }
 
-  .search_results_clild button {
+  .search_text_res button {
     margin-left: 2px;
     font-size: 9px;
     padding: 2px 8px;
     width: auto;
+  }
+
+  .search_res_img img {
+    height: 100%;
   }
 }
 
@@ -240,9 +250,9 @@
     font-size: 15px;
   }
 
-  .home_search_area img {
-    height: 20px;
-    width: 20px;
+  .search_res_img img {
+    height: 100%;
+    width: 110px;
   }
 
   .home_search_area button {
@@ -251,17 +261,13 @@
     margin-left: 5px;
   }
 
-  .search_results_clild img {
-    width: 30px;
-  }
-
   .search_res_texts {
     margin-left: 5px;
     height: auto;
   }
 
-  .search_results_clild p {
-    font-size: 10px;
+  .search_text_res {
+    font-size: 9px;
     padding: 0;
   }
 
