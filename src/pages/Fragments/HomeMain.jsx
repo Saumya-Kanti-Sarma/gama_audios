@@ -7,6 +7,7 @@ const HomeMain = () => {
   const [searchVal, setSearchVal] = useState(''); //this will store search values
   const [loading, setLoading] = useState('none'); //this will show/don't show the loading..
   const [musicData, setMusicData] = useState(null); //this will store the fetched data..
+  const [downloadURL, setdownloadURL] = useState("");
 
   const fetchData = async () => {
     setLoading("block");
@@ -15,12 +16,12 @@ const HomeMain = () => {
       const response = await axios.request(url);
       await setMusicData(response.data.data);
       setLoading("none");
+      console.log(musicData);
     } catch (error) {
       console.error('Error fetching data:', error);
       setLoading("none");
     }
   };
-
   useEffect(() => {
     if (musicData === null) {
       console.log("Network error, please try again...");
@@ -28,6 +29,22 @@ const HomeMain = () => {
       console.log(musicData);
     }
   }, [musicData]);
+
+
+  const MusicApi = async (link) => {
+    function removeBaseUrl(url) {
+      const baseUrl = "https://www.youtube.com/watch?v=";
+      return url.replace(baseUrl, '');
+    }
+    const originalUrl = link;
+    const modifiedUrl = removeBaseUrl(originalUrl);
+
+    console.log(modifiedUrl);
+    const url = `https://audiodownload.onrender.com/api/mp3/${modifiedUrl}`;
+    const response = await axios.request(url);
+    setdownloadURL(`https://audiodownload.onrender.com/${response.data.audio_url}`);
+    console.log(downloadURL);
+  }
 
   return (
     <>
@@ -67,26 +84,16 @@ const HomeMain = () => {
                 <div className="search_res_texts">
                   <p className="search_text_res">Title: {item.title || "Gama Audios Official | Album"}</p>
                   <p className="search_text_res">Views: {item.views || "12M"}
-                    <button>Download</button>
-                    <button>Watch</button>
+                    <button
+                      onClick={() => { MusicApi(item.link) }}
+                    ><a href={downloadURL} target="_blank" rel="noopener noreferrer">Download</a></button>
+                    <button><a href={item.link}>Watch</a></button>
                   </p>
                 </div>
               </div>
             ))
           ) : (
-            <div className="search_results_child">
-              <div className="search_res_img">
-                <img src="/gama_audios/album.jpg" alt="album" />
-              </div>
-
-              <div className="search_res_texts">
-                <p className="search_text_res">Title: Gama Audios Official | Album</p>
-                <p className="search_text_res">Views: 12M
-                  <button>Download</button>
-                  <button>Watch</button>
-                </p>
-              </div>
-            </div>
+            null
           )
         }
       </div>
