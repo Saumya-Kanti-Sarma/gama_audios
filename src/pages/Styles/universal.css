@@ -22,6 +22,10 @@ img {
 
 }
 
+a {
+  text-decoration: none;
+  color: whitesmoke;
+}
 
 /* LOADER */
 /* HTML: <div class="loader"></div> */
@@ -47,5 +51,11 @@ img {
 
   100% {
     text-shadow: -10ch 0 0 #000, 0 0 0 #000
+  }
+}
+
+@media (max-width: 480px) {
+  .loader {
+    font-size: 18px;
   }
 }

@@ -68,6 +68,10 @@ const ReviewArea = () => {
           onChange={handleInputChange}
         ></textarea>
       </div>
+      <div className="radio_buttons">
+        <input type="radio" name="male" id="male" />Male
+        <input type="radio" name="male" id="male" />Female
+      </div>
       <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
         <input
           type="submit"

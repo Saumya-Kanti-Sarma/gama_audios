@@ -6,6 +6,7 @@ import "../Styles/Home.css";
 import HomeMain from '../Fragments/HomeMain';
 import DownloadExp from '../Fragments/DownloadExp';
 import ReviewArea from '../Fragments/ReviewArea';
+import UserReviews from '../Fragments/UserReviews';
 const Home = () => {
   const [mainVisible, setMainVisible] = useState(true);
 
@@ -32,6 +33,7 @@ const Home = () => {
               </div>
             </div>
           </div>
+          <UserReviews />
           <br />
           <br />
           <footer style={{ backgroundColor: "blueviolet" }}><Footer /></footer>

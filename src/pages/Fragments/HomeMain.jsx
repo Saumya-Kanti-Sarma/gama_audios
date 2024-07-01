@@ -8,25 +8,30 @@ const HomeMain = () => {
   const [loading, setLoading] = useState('none'); //this will show/don't show the loading..
   const [musicData, setMusicData] = useState(null); //this will store the fetched data..
   const [downloadURL, setdownloadURL] = useState("");
+  const [Display, setDisplay] = useState("none");
+
 
   const fetchData = async () => {
     setLoading("block");
+    setDisplay("none");
     try {
       const url = `https://youtube-api-3g52.onrender.com/api/${searchVal}`;
       const response = await axios.request(url);
       await setMusicData(response.data.data);
       setLoading("none");
-      console.log(musicData);
+      //console.log(musicData);
+      setDisplay("block");
     } catch (error) {
       console.error('Error fetching data:', error);
       setLoading("none");
+      setDisplay("block");
     }
   };
   useEffect(() => {
     if (musicData === null) {
       console.log("Network error, please try again...");
     } else {
-      console.log(musicData);
+      //console.log(musicData);
     }
   }, [musicData]);
 
@@ -39,11 +44,11 @@ const HomeMain = () => {
     const originalUrl = link;
     const modifiedUrl = removeBaseUrl(originalUrl);
 
-    console.log(modifiedUrl);
+    //console.log(modifiedUrl);
     const url = `https://audiodownload.onrender.com/api/mp3/${modifiedUrl}`;
     const response = await axios.request(url);
     setdownloadURL(`https://audiodownload.onrender.com/${response.data.audio_url}`);
-    console.log(downloadURL);
+    //console.log(downloadURL);
   }
 
   return (
@@ -73,7 +78,7 @@ const HomeMain = () => {
       <div className='loader' style={{ display: loading }}>Loading...</div>
 
       {/* SEARCH RESULTS */}
-      <div className="search_results">
+      <div className="search_results" style={{ display: Display }}>
         {
           musicData && musicData.length > 0 ? (
             musicData.map((item, index) => (
@@ -83,7 +88,7 @@ const HomeMain = () => {
                 </div>
                 <div className="search_res_texts">
                   <p className="search_text_res">Title: {item.title || "Gama Audios Official | Album"}</p>
-                  <p className="search_text_res">Views: {item.views || "12M"}
+                  <p className="search_text_res"> {item.views || "12M"}
                     <button
                       onClick={() => { MusicApi(item.link) }}
                     ><a href={downloadURL} target="_blank" rel="noopener noreferrer">Download</a></button>
@@ -97,6 +102,7 @@ const HomeMain = () => {
           )
         }
       </div>
+
     </>
   )
 }
