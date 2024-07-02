@@ -9,6 +9,10 @@ const HomeMain = () => {
   const [musicData, setMusicData] = useState(null); //this will store the fetched data..
   const [downloadURL, setdownloadURL] = useState("");
   const [Display, setDisplay] = useState("none");
+  const [Opacity, setOpacity] = useState("none");
+  const [buttonDisplay, setbuttonDisplay] = useState("block");
+  const [downloadTxt, setdownloadTxt] = useState("Generate Link");
+
 
 
   const fetchData = async () => {
@@ -19,7 +23,7 @@ const HomeMain = () => {
       const response = await axios.request(url);
       await setMusicData(response.data.data);
       setLoading("none");
-      //console.log(musicData);
+      console.log(musicData);
       setDisplay("block");
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -31,25 +35,25 @@ const HomeMain = () => {
     if (musicData === null) {
       console.log("Network error, please try again...");
     } else {
-      //console.log(musicData);
+      console.log(musicData);
     }
   }, [musicData]);
 
 
-  const MusicApi = async (link) => {
+  const MusicApi = (link) => {
     function removeBaseUrl(url) {
       const baseUrl = "https://www.youtube.com/watch?v=";
       return url.replace(baseUrl, '');
-    }
-    const originalUrl = link;
-    const modifiedUrl = removeBaseUrl(originalUrl);
-
-    //console.log(modifiedUrl);
-    const url = `https://audiodownload.onrender.com/api/mp3/${modifiedUrl}`;
-    const response = await axios.request(url);
-    setdownloadURL(`https://audiodownload.onrender.com/${response.data.audio_url}`);
-    //console.log(downloadURL);
-  }
+    };
+    const downloadLink = async () => {
+      const modifiedUrl = removeBaseUrl(link);
+      //console.log(modifiedUrl);
+      const response = await axios.request(`https://audiodownload.onrender.com/api/mp3/${modifiedUrl}`);
+      await setdownloadURL(`https://audiodownload.onrender.com/${response.data.audio_url}`);
+      setOpacity("block");
+    };
+    downloadLink();
+  }; //MusicApi(item.link)
 
   return (
     <>
@@ -82,20 +86,38 @@ const HomeMain = () => {
         {
           musicData && musicData.length > 0 ? (
             musicData.map((item, index) => (
-              <div className="search_results_child" key={index}>
+              <div className="search_results_child" key={index}
+
+              >
                 <div className="search_res_img">
                   <img className='search-res_img_inner_img' src={item.thumbnail || "/gama_audios/album.jpg"} alt="album" />
                 </div>
                 <div className="search_res_texts">
-                  <p className="search_text_res">Title: {item.title || "Gama Audios Official | Album"}</p>
-                  <p className="search_text_res"> {item.views || "12M"}
+                  <p className="search_text_res">Title: {item.title}</p>
+                  <p className="search_text_res" > {item.views || "12M"}
                     <button
-                      onClick={() => { MusicApi(item.link) }}
-                    ><a href={downloadURL} target="_blank" rel="noopener noreferrer">Download</a></button>
-                    <button><a href={item.link}>Watch</a></button>
+                      style={{ display: buttonDisplay }}
+                      onClick={() => {
+                        MusicApi(item.link);
+                        setdownloadTxt("Download");
+                        setOpacity("inline");
+                        setbuttonDisplay("none");
+                      }}
+                    >
+                      {downloadTxt}
+                    </button>
+
+                    <button style={{ display: Opacity }}>
+                      <a href={downloadURL} >{downloadTxt}</a>
+                    </button>
+
+                    <button><a href={item.link} target="_blank" rel="noopener noreferrer"
+                    >Watch</a></button>
+
                   </p>
                 </div>
               </div>
+
             ))
           ) : (
             null

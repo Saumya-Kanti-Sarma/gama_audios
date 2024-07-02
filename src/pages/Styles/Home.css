@@ -88,6 +88,7 @@
   font-size: 30px;
   font-style: bold;
   margin: 0;
+  display: flex;
 }
 
 .search_text_res button {
