@@ -50,7 +50,6 @@ const HomeMain = () => {
       //console.log(modifiedUrl);
       const response = await axios.request(`https://audiodownload.onrender.com/api/mp3/${modifiedUrl}`);
       await setdownloadURL(`https://audiodownload.onrender.com/${response.data.audio_url}`);
-      setOpacity("block");
     };
     downloadLink();
   }; //MusicApi(item.link)
@@ -108,7 +107,7 @@ const HomeMain = () => {
                     </button>
 
                     <button style={{ display: Opacity }}>
-                      <a href={downloadURL} >{downloadTxt}</a>
+                      <a href={downloadURL} target="_blank" rel="noopener noreferrer">{downloadTxt}</a>
                     </button>
 
                     <button><a href={item.link} target="_blank" rel="noopener noreferrer"
